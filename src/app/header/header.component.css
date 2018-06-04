@@ -1,0 +1,11 @@
+@media only screen and (max-width: 767.5px) {
+
+	#mobile-menu {
+		float: right;
+		margin-right: 20px;
+	}
+
+	#main-nav-hide {
+		display: none;
+	}
+}
