@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { RecipeModel } from '../recipe.model';
 
+import { RecipeService } from '../recipe.service');
+
 @Component({
   selector: 'recipe-list',
   templateUrl: './recipe-list.component.html',
@@ -10,11 +12,8 @@ import { RecipeModel } from '../recipe.model';
 export class RecipeListComponent implements OnInit{
   
   //define this as specifically a recipe model array so that it will recognize objects and only allow objects of specified model	
-  recipes: RecipeModel[] = [
-   //an example recipe
-  new RecipeModel('Test Recipe', 'test desc', 'https://martensitakinenglish.files.wordpress.com/2014/03/printable-recipe-cards-martensitak.png'),
-  new RecipeModel('Another Recipe', 'second desc', 'https://martensitakinenglish.files.wordpress.com/2014/03/printable-recipe-cards-martensitak.png')
-  ];
+  //moved to recipe.service (delete)
+  recipes: RecipeModel[];
 
   @Output() selected = new EventEmitter<RecipeModel>();
 
@@ -22,9 +21,12 @@ export class RecipeListComponent implements OnInit{
   	this.selected.emit(currentRecipe);
   }
 
-  constructor() { }
+  //inject recipe service
+  constructor(private recipeService: RecipeService) { }
 
+  //define recipes with recipe service
   ngOnInit() {
+  	this.recipes = this.recipeService.getRecipes();
   }
 
 }
