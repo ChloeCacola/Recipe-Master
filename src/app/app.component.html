@@ -1,10 +1,13 @@
-<app-header>Loading header..</app-header>
+<app-header
+(selection)="onNavigate($event)"></app-header>
 
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-    	<recipe>Loading recipes...</recipe>
-    	<shopping-list>Loading shopping list..</shopping-list>
+    	<recipe
+    	*ngIf="selected === 'recipe'"></recipe>
+    	<shopping-list
+    	*ngIf="selected !== 'recipe'"></shopping-list>
     </div>
   </div>
 </div>

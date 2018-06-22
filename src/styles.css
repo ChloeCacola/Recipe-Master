@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*this can be adjusted to suite handicapped users!  (future)*/
+/*no outline makes handicap browsing difficult*/
+.btn:focus {
+	outline: 0;
+}

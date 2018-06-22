@@ -1,7 +1,8 @@
 <div class="row">
 	<div class="col-xs-10">
 		
-		<shopping-edit>Loading shopping list edit tools..</shopping-edit>
+		<shopping-edit
+		 (addIngredientInfo)="onIngredientAdded($event)">Loading shopping list edit tools..</shopping-edit>
 		<hr>
 		<ul class="list-group">
 			<!-- don't need href here since it'll be like a button -->

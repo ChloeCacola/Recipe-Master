@@ -1,10 +1,18 @@
-<a href="#" class="list-group-item clearfix">
-    <div class="pull-left">
-    			<!-- below will be dynamic data (recipe name, description, and src of img) -->
-    	<h4 class="list-group-item-heading"> {{ "dynamic" }} </h4>
-    	<p class="list-group-item-text">{{ "dynamic" }} </p>
-    </div>
-    <span class="pull-right">
-    	<img src="{{ dynamic }}" alt="" class="img-responsive" style="max-height: 50px;">
-    </span>
+<a 
+   class="list-group-item clearfix recipeItems"
+   (click)="onSelectRecipe()">
+
+  <div class="pull-left">
+   <!-- below will be dynamic data (recipe name, description, and src of img) -->
+   <h4 class="list-group-item-heading"> <b>{{ recipe.name }}</b> </h4>
+    <p class="list-group-item-text">{{ recipe.description }}</p>
+  </div>
+
+  <span class="pull-right">
+      <img 
+       [src]="recipe.imagePath" 
+       alt="{{ recipe.name }}" 
+       class="img-responsive" 
+       style="max-height: 50px;">
+  </span>
 </a>
