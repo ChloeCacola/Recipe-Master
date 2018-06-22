@@ -3,13 +3,12 @@
 		<!-- [below for practice only] -->
 		<!-- (to be modified) -->
 		<!-- can simply set the existing recipemodel, currentRecipeEl, within this component = to the data ($event) that was passed; this would be the same as defining currentRecipeEl with a method or function within recipe.component -->
-		<recipe-list
-		(selected)="currentRecipeEl = $event"></recipe-list>
+		<recipe-list></recipe-list>
 	</div>
 	<div class="col-md-7">
 		<recipe-detail
-		*ngIf="currentRecipeEl !== undefined; else infoText"
-		[currentRecipe]="currentRecipeEl"></recipe-detail>
+		*ngIf="selectedRecipe !== undefined; else infoText"
+		[currentRecipe]="selectedRecipe"></recipe-detail>
 
 		<ng-template #infoText>
 			<p>Please select a Recipe.</p>
