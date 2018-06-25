@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { IngredientModel } from '../shared/ingredient.model';
 
+import { ShoppingListService } from './shopping-list.service';
+
 @Component({
   selector: 'shopping-list',
   templateUrl: './shopping-list.component.html',
@@ -9,19 +11,21 @@ import { IngredientModel } from '../shared/ingredient.model';
 })
 
 export class ShoppingListComponent implements OnInit {
-	
-	ingredients: IngredientModel[] = [
-	    //test ingredients
-		new IngredientModel('Apples', 5),
-		new IngredientModel('Tomatoes', 2)
-	];
 
-  constructor() { }
+  ingredients: IngredientModel[];
+
+  constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit() {
+  	this.ingredients = this.shoppingListService.getIngredients();
+
+  	//inform this component that the list has changed/updated
+  	//to be updated later with observables
+  	this.shoppingListService.ingredientsChanged.subscribe(
+  		(ingredients: IngredientModel[]) => {
+  			this.ingredients = ingredients;
+  		    }
+  		)
   }
 
-  onIngredientAdded(ingredient: IngredientModel) {
-  	this.ingredients.push(ingredient);
-  }
 }
