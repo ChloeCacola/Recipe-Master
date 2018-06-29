@@ -1,7 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
-/*this can be adjusted to suite handicapped users!  (future)*/
-/*no outline makes handicap browsing difficult*/
-.btn:focus {
-	outline: 0;
+/*changing all primary styled button color states*/
+.btn-primary, .btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
+	background-color: #6cc;
+	border-color: #6cc;
 }
+
+.btn-primary:focus {
+	background-color: #6cc;
+	border-color: #6cc;
+}
+
+.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open>.dropdown-toggle.btn-primary.focus, .open>.dropdown-toggle.btn-primary:focus, .open>.dropdown-toggle.btn-primary:hover {
+	background-color: #5cc;
+	border-color: #4cc;
+}
+

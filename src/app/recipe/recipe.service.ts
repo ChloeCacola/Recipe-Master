@@ -18,8 +18,7 @@ export class RecipeService {
   	  new IngredientModel('test ingredient', 5),
   	  new IngredientModel('test ingr 2', 10),
   	  new IngredientModel('test ingr 3', 1)
-  	]
-  	),
+  	]),
   new RecipeModel(
   	'Another Recipe', 
   	'second desc', 
@@ -36,6 +35,10 @@ export class RecipeService {
   	//because arrays and objects are reference types, returning this.recipes only will access the same array on this service.
   	//Instead of this.recipes, .slice is added so that a copy of the array is returned instead. 
   	return this.recipes.slice();  //(a copy!)
+  }
+
+  getRecipe(index: number) {
+  	return this.recipes[index]
   }
 
 }

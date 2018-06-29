@@ -6,9 +6,11 @@
 		<recipe-list></recipe-list>
 	</div>
 	<div class="col-md-7">
-		<recipe-detail
+		<!-- <recipe-detail
 		*ngIf="selectedRecipe !== undefined; else infoText"
-		[currentRecipe]="selectedRecipe"></recipe-detail>
+		[currentRecipe]="selectedRecipe"></recipe-detail> -->
+
+		<router-outlet></router-outlet>
 
 		<ng-template #infoText>
 			<p>Please select a Recipe.</p>

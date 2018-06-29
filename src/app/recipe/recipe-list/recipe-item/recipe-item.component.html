@@ -1,7 +1,9 @@
+<!-- relative path can be used for routerLink in this case since will already be on '/recipes' -- this is the same as [routerLink]="['/recipes', recipeList.indexOf(recipe)]" -->
 <a 
    style="cursor: pointer"
    class="list-group-item clearfix recipeItems"
-   (click)="onSelectRecipe()">
+   [routerLink]="[recipeList.indexOf(recipe)]"
+   routerLinkActive="active">
 
   <div class="pull-left">
    <!-- below will be dynamic data (recipe name, description, and src of img) -->

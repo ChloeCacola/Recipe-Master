@@ -10,6 +10,7 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 import { RecipeItemComponent } from './recipe/recipe-list/recipe-item/recipe-item.component';
+import { RecipeNotSelectedComponent } from './recipe/recipe-not-selected/recipe-not-selected.component';
 
 import { DropdownDirective } from './shared/dropdown.directive';
 
@@ -17,6 +18,7 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 
 //for routing
 import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { AppRoutingModule } from './app-routing.module';
     RecipeListComponent,
     RecipeDetailComponent,
     RecipeItemComponent,
-    DropdownDirective
+    DropdownDirective,
+    RecipeNotSelectedComponent
   ],
   imports: [
     BrowserModule,
