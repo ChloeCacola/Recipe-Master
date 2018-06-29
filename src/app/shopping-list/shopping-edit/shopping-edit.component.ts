@@ -22,18 +22,23 @@ export class ShoppingEditComponent implements OnInit {
   }
 
   onAdd() {
-  	//use const when only declaring a variable ONE time
-  	//declare something a const if don't plan on changing it
+  	//if inputs are not empty
+  	if(this.nameInputRef.nativeElement.value !== '' 
+  		&& this.amountInputRef.nativeElement.value !== '') 
+  	{
+	  	//use const when only declaring a variable ONE time
+	  	//declare something a const if don't plan on changing it
 
-  	//get the viewchild input values
-  	const ingName = this.nameInputRef.nativeElement.value;
-  	const ingAmt = this.amountInputRef.nativeElement.value;
+	  	//get the viewchild input values
+	  	const ingName = this.nameInputRef.nativeElement.value;
+	  	const ingAmt = this.amountInputRef.nativeElement.value;
 
-  	//create new ingredient with input values
-  	const newIngredient = new IngredientModel(ingName, ingAmt);
+	  	//create new ingredient with input values
+	  	const newIngredient = new IngredientModel(ingName, ingAmt);
 
-  	//pass the new ingredient to the service
-  	this.shoppingListService.addIngredient(newIngredient);
+	  	//pass the new ingredient to the service
+	  	this.shoppingListService.addIngredient(newIngredient);
+	  }
   }
 
 }
