@@ -1,5 +1,6 @@
 import { EventEmitter } from '@angular/core';
 import { RecipeModel } from './recipe.model';
+import { IngredientModel } from '../shared/ingredient.model';
 
 export class RecipeService {
 
@@ -9,8 +10,25 @@ export class RecipeService {
   //the recipe data (not accessible from outside)
   private recipes: RecipeModel[] = [
   //example recipes
-  new RecipeModel('Test Recipe', 'test desc', 'https://martensitakinenglish.files.wordpress.com/2014/03/printable-recipe-cards-martensitak.png'),
-  new RecipeModel('Another Recipe', 'second desc', 'https://martensitakinenglish.files.wordpress.com/2014/03/printable-recipe-cards-martensitak.png')
+  new RecipeModel(
+  	'Test Recipe', 
+  	'test desc', 
+  	'https://martensitakinenglish.files.wordpress.com/2014/03/printable-recipe-cards-martensitak.png',
+  	[
+  	  new IngredientModel('test ingredient', 5),
+  	  new IngredientModel('test ingr 2', 10),
+  	  new IngredientModel('test ingr 3', 1)
+  	]
+  	),
+  new RecipeModel(
+  	'Another Recipe', 
+  	'second desc', 
+  	'https://martensitakinenglish.files.wordpress.com/2014/03/printable-recipe-cards-martensitak.png',
+  	[
+  	  new IngredientModel('test ingr 1', 3),
+  	  new IngredientModel('test ingr 2', 3),
+  	  new IngredientModel('test ingr 3', 8)
+  	])
   ];
 
   //allowing access from outside

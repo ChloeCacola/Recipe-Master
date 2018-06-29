@@ -20,7 +20,9 @@
 			Manage Recipe <span class="caret"></span>
 		    </button>
 		    <ul class="dropdown-menu">
-		    	<li><a href="#">
+		    	<li><a  routerLink="/shopping-list"
+		    			style="cursor: pointer;"
+		    		   (click)="addToList()">
 		          <span class="glyphicon glyphicon-plus"></span> Shopping List
 		        </a></li>
 		    	<li><a href="#">
@@ -41,6 +43,13 @@
 </div>
 <div class="row">
 	<div class="col-xs-12">
-		Ingredients
+		<ul class="list-group">
+			<!-- access ingredients array of the current recipe selected (the list of recipes are found in recipe service) -->
+			<li class=
+			"list-group-item"
+			*ngFor="let ingredient of currentRecipe.ingredients">
+				{{ ingredient.name }} - {{ ingredient.amount }}
+			</li>
+		</ul>
 	</div>
 </div>

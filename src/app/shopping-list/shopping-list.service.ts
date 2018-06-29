@@ -29,5 +29,3 @@ export class ShoppingListService {
   }
 
 }
-
-//CHECK THIS IN VIDEO!

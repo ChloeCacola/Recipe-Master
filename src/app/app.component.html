@@ -4,10 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-    	<recipe
-    	*ngIf="selected === 'recipe'"></recipe>
-    	<shopping-list
-    	*ngIf="selected !== 'recipe'"></shopping-list>
+    	<router-outlet></router-outlet>
     </div>
   </div>
 </div>
