@@ -20,7 +20,7 @@ export class RecipeDetailComponent implements OnInit {
   id: number;
 
   //inject shopping list service for use of informing list additions from the recipe
-  constructor(private shoppingListService: ShoppingListService, private recipeService: RecipeService, private route: ActivatedRoute) { }
+  constructor(private shoppingListService: ShoppingListService, private recipeService: RecipeService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
 

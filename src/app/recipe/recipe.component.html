@@ -1,19 +1,12 @@
 <div class="row">
 	<div class="col-md-5">
-		<!-- [below for practice only] -->
-		<!-- (to be modified) -->
-		<!-- can simply set the existing recipemodel, currentRecipeEl, within this component = to the data ($event) that was passed; this would be the same as defining currentRecipeEl with a method or function within recipe.component -->
+
 		<recipe-list></recipe-list>
+
 	</div>
 	<div class="col-md-7">
-		<!-- <recipe-detail
-		*ngIf="selectedRecipe !== undefined; else infoText"
-		[currentRecipe]="selectedRecipe"></recipe-detail> -->
-
+		
 		<router-outlet></router-outlet>
 
-		<ng-template #infoText>
-			<p>Please select a Recipe.</p>
-		</ng-template>
 	</div>
 </div>
