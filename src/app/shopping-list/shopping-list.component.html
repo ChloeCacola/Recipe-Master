@@ -5,10 +5,12 @@
 		<hr>
 		<ul class="list-group">
 			<!-- don't need href here since it'll be like a button -->
+			<!-- need the 'id' of the ingredient, so will pass the index which will serve as the id -->
 			<a 
 			class="list-group-item" 
 			style="cursor:pointer"
-			*ngFor="let ingredient of ingredients"
+			*ngFor="let ingredient of ingredients; let i = index"
+			(click)="onEditItem(i)"
 			>
 				{{ ingredient.name }} ({{ ingredient.amount }})
 			</a>

@@ -1,15 +1,12 @@
-import { EventEmitter } from '@angular/core';
-
 import { IngredientModel } from '../shared/ingredient.model';
+
+import { Subject } from 'rxjs';
 
 export class ShoppingListService {
 
-  //it is not good practice to use eventemitters in services.
-  // this is for learning; it will be changed later with observables!
-  // NOTE: could use ngDoCheck as a way of updating the ingredients copy on shopping-list component, BUT, based on input/docs the proper method would be to subscribe to the event here.
-  //could also pass VOID here and simply call getIngredients() again in component instead of passing the array again, this is again for learning/clarity.
-  ingredientsChanged = new EventEmitter<IngredientModel[]>(); //could simply be void and call getIngredients again from shopping-list component.
-
+  //using an observable instead of eventemitter 
+  ingredientsChanged = new Subject<IngredientModel[]>(); //could simply be void and call getIngredients again from shopping-list component.
+  startedEditing = new Subject<number>();
 
   //the recipe data 
   private ingredients: IngredientModel[] = [
@@ -21,11 +18,26 @@ export class ShoppingListService {
   addIngredient(ingredients: IngredientModel) {
   	//add a new ingredient
   	this.ingredients.push(ingredients);
-  	this.ingredientsChanged.emit(this.ingredients.slice());
+  	this.ingredientsChanged.next(this.ingredients.slice());
   }
 
   getIngredients() {
   	return this.ingredients.slice();
+  }
+
+  //for editing
+  getIngredient(index: number) {
+  	return this.ingredients[index];
+  }
+  //will call this item if in 'editMode' in shopping-edit
+  updateIngredient(index: number, newIngredient: IngredientModel) {
+  	this.ingredients[index] = newIngredient;
+  	//emit updated ingredients (copy)
+  	this.ingredientsChanged.next(this.ingredients.slice());
+  }
+  deleteIngredient(index: number) {
+  	this.ingredients.splice(index, 1);
+  	this.ingredientsChanged.next(this.ingredients.slice());
   }
 
 }

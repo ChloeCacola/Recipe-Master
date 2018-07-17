@@ -1,11 +1,9 @@
-import { EventEmitter } from '@angular/core';
 import { RecipeModel } from './recipe.model';
 import { IngredientModel } from '../shared/ingredient.model';
 
 export class RecipeService {
 
-  //the recipe that is selected via recipe-item component
-  recipeSelected = new EventEmitter<RecipeModel>();
+ 
 
   //the recipe data (not accessible from outside)
   private recipes: RecipeModel[] = [

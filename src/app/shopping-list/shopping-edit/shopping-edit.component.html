@@ -1,41 +1,51 @@
 <div class="row">
 	<div class="col-xs-12">
 		<h3>Edit Shopping List</h3>
-		<form ngNativeValidate>
+		<!-- template driven approach here; use ngModel to specify which fields are controls -->
+		<form (ngSubmit)="onSubmitItem(f)" #f="ngForm">
 			<div class="col-sm-5 col-no-padding form-group">
-				<label for="name">Name</label>
+				<label for="itemName">Name</label>
 				<input 
 				 required
 				 type="test" 
-				 id="name" 
+				 id="itemName" 
 				 class="form-control"
-				 #nameInput>
+				 name="itemName"
+				 ngModel>
 			</div>
 			<div class="col-sm-2 col-no-padding form-group">
 				<label for="amount">Amount</label>
+				<!-- specify pattern validator, no numbers less than zero -->
+				<!-- (checks input agains regex) -->
 				<input 
 				 required
+				 pattern="^[1-9]+[0-9]*$"
 				 type="number" 
 				 id="amount" 
 				 class="form-control"
-				 #amountInput>
+				 name="amount"
+				 ngModel>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
+					<!-- ADD if adding item -->
+					<!-- EDIT if editing item -->
 					<button 
 					 class="btn btn-success" 
 					 type="submit"
-					 (click)="onAdd()">
-					 Add
+					 [disabled]="!f.valid">
+					 {{editMode ? 'Update' : 'Add'}}
 				    </button>
 					<button 
 					 class="btn btn-danger" 
-					 type="button">
+					 type="button"
+					 (click)="onDelete()">
 					Delete
 				    </button>
 					<button 
 					 class="btn btn-primary" 
-					 type="button">
+					 type="button"
+					 (click)="onClear()">
 					Clear
 				    </button>
 				</div>
