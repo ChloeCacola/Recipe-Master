@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, 
 		 FormControl, 	
 		 FormArray, 
@@ -7,6 +7,7 @@ import { FormGroup,
 
 import { RecipeService } from '../recipe.service';
 import { RecipeModel } from '../recipe.model';
+import { IngredientModel } from '../../shared/ingredient.model';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class RecipeEditComponent implements OnInit {
   //for new and existing recipes (reactive form)
   recipeForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private recipeService: RecipeService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private recipeService: RecipeService) { }
 
   ngOnInit() {
   	this.route.params
@@ -40,11 +41,15 @@ export class RecipeEditComponent implements OnInit {
   //for initializing the reactive recipe form
   //call this when the route params change (page reloaded) - in subscription route.params
   private initForm() {
+
+
   	//for defaults
   	let recipeName = '';
   	let recipeImgPath = '';
   	let recipeDesc = '';
   	let recipeIngredients = new FormArray([]);
+
+
   	//must determine edit mode
   	if (this.editMode) {
   		//fetch recipe
@@ -99,6 +104,24 @@ export class RecipeEditComponent implements OnInit {
   	} else {
   		this.recipeService.addRecipe(newRecipe);
   	}
+
+  	//redirect AFTER form submission
+  	if(!this.recipeForm.pending) {
+  		this.router.navigateByUrl('/recipes/' + this.id);
+  	}
+
+  }
+
+  onDelete() {
+  	this.recipeService.deleteRecipe(this.id);
+  }
+
+  onCancel() {
+  	this.router.navigateByUrl('/recipes/' + this.id);
+  }
+
+  onDeleteIngredient(ingredientIndex: number) {
+  	this.recipeService.deleteIngredient(this.id, ingredientIndex);
   }
 
 }

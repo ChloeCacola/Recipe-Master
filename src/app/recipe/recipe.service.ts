@@ -7,6 +7,8 @@ export class RecipeService {
 
   //using an observable so can subscribe to the updates whenever a recipe is modified or a new one is created
   recipesChanged = new Subject<RecipeModel[]>();
+  //and for ingredients
+  ingredientsChanged = new Subject<IngredientModel[]>();
 
   //the recipe data (not accessible from outside)
   private recipes: RecipeModel[] = [
@@ -51,5 +53,15 @@ export class RecipeService {
   updateRecipe(index: number, newRecipe: RecipeModel) {
     this.recipes[index] = newRecipe;
     this.recipesChanged.next(this.recipes.slice());
+  }
+
+  deleteRecipe(index: number) {
+    this.recipes.splice(index, 1);
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  deleteIngredient(index: number, ingredientIndex: number) {
+    this.recipes[index].ingredients.splice(index, 1);
+    this.ingredientsChanged.next(this.recipes[index].ingredients);
   }
 }

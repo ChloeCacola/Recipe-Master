@@ -29,7 +29,8 @@
 		    			style="cursor: pointer;">
 		    	  <span class="glyphicon glyphicon-pencil"></span> Edit Recipe
 		    	</a></li>
-		    	<li><a 
+		    	<li><a  (click)="onDelete()"
+		    			routerLink="/recipes"
 		    			style="cursor: pointer;">
 		    	  <span class="glyphicon glyphicon-remove"></span> Delete Recipe
 		    	</a></li>
@@ -45,7 +46,8 @@
 </div>
 <div class="row">
 	<div class="col-xs-12">
-		<ul class="list-group">
+		<ul class="list-group"
+			*ngIf="currentRecipe !== null">
 			<!-- access ingredients array of the current recipe selected (the list of recipes are found in recipe service) -->
 			<li class=
 			"list-group-item"

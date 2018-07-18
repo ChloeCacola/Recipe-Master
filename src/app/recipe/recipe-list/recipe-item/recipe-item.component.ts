@@ -12,13 +12,21 @@ import { RecipeService } from '../../recipe.service';
 export class RecipeItemComponent implements OnInit {
 
   @Input() recipe : RecipeModel;
-
-  recipeList = this.recipeService.getRecipes();
+  recipeList: RecipeModel[];
 
   //inject recipe service 
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
+  	//subscribing to any recipe updates
+  	//this is needed here or else the params will not be updated when deleting recipes (id for params updated here in html)
+    this.recipeService.recipesChanged.subscribe(
+      (recipesUpdated: RecipeModel[])=> {
+        this.recipeList = recipesUpdated;
+      });
+
+    //getting the recipes from recipe service (where recipes are stored and handled)
+  	this.recipeList = this.recipeService.getRecipes();
   }
 
 }

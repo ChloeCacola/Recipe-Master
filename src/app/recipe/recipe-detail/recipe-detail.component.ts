@@ -24,14 +24,13 @@ export class RecipeDetailComponent implements OnInit {
 
   ngOnInit() {
 
-  	//subscribing to params observable in order to display current recipe
-  	this.route.params
-  		.subscribe(
-  			(params: Params) => {
-  				this.id = +params['id'];
-  				this.currentRecipe = this.recipeService.getRecipe(this.id);
-  			});
-
+    //subscribing to params observable in order to display current recipe
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = +params['id'];
+          this.currentRecipe = this.recipeService.getRecipe(this.id);
+        });
    }
 
   //inform shopping list service to add the selected recipe's ingredients to the list
@@ -51,4 +50,8 @@ export class RecipeDetailComponent implements OnInit {
   			this.ingredientsChanged.emit(this.ingredients.slice());
   		}
   	*/ 
+
+    onDelete() {
+      this.recipeService.deleteRecipe(this.id);
+    }
 }

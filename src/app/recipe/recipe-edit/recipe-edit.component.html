@@ -1,7 +1,7 @@
 <!-- REACTIVE form -->
 <div class="row">
 	<div class="col-xs-12">
-		<form [formGroup]="recipeForm" (ngSubmit)="onSave()">
+		<form [formGroup]="recipeForm" (ngSubmit)="onSave()" action="/recipes">
 			<div class="row pull-right">
 				<div class="col-xs-12">
 					<button class="btn btn-success recipe" 
@@ -9,10 +9,16 @@
 						[disabled]="recipeForm.invalid">
 						Save
 					</button>
-					<button class="btn btn-danger recipe" type="button">
+					<button 
+						class="btn btn-danger recipe" 
+						type="button"
+						(click)="onCancel()">
 						Cancel
 					</button>
-					<button class="btn btn-danger recipe" type="button">
+					<button class="btn btn-danger recipe" 
+						type="button"
+						(click)="onDelete()"
+						routerLink="/recipes">
 						<span class="glyphicon glyphicon-trash" title="delete recipe"></span>
 					</button>
 				</div>
@@ -80,7 +86,10 @@
 							   formControlName="amount">
 						</div>
 						<div class="col-xs-2">
-							<button class="btn btn-sm btn-danger" title="delete ingredient">X</button>
+							<button class="btn btn-danger" 
+								title="delete ingredient"
+								type="button"
+								(click)="onDeleteIngredient(i)">X</button>
 						</div>
 					</div>
 					<hr>

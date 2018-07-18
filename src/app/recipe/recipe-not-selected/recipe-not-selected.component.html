@@ -1,1 +1,2 @@
-<h3>Select a recipe.</h3>
+<h3 *ngIf="noRecipes">Create a recipe!</h3>
+<h3 *ngIf="!noRecipes">Select a recipe.</h3>
