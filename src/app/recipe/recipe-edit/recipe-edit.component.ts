@@ -107,17 +107,20 @@ export class RecipeEditComponent implements OnInit {
 
   	//redirect AFTER form submission
   	if(!this.recipeForm.pending) {
-  		this.router.navigateByUrl('/recipes/' + this.id);
+  		this.router.navigate(['../'], {relativeTo: this.route});
   	}
 
   }
 
   onDelete() {
   	this.recipeService.deleteRecipe(this.id);
+  	this.router.navigate(['/recipes']);
   }
 
   onCancel() {
-  	this.router.navigateByUrl('/recipes/' + this.id);
+  	//if cancelling from edit, will take back to recipe,
+  	//if cancelling from new will take back to all recipes 
+  	this.router.navigate(['../'], {relativeTo: this.route});
   }
 
   onDeleteIngredient(ingredientIndex: number) {

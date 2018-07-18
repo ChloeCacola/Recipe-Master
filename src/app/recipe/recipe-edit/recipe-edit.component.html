@@ -17,8 +17,7 @@
 					</button>
 					<button class="btn btn-danger recipe" 
 						type="button"
-						(click)="onDelete()"
-						routerLink="/recipes">
+						(click)="onDelete()">
 						<span class="glyphicon glyphicon-trash" title="delete recipe"></span>
 					</button>
 				</div>
@@ -43,7 +42,8 @@
 						<input type="text"
 							   id="imgPath"
 							   formControlName="imgPath"
-							   class="form-control">
+							   class="form-control"
+							   #imgPath>
 					</div>
 				</div>
 			</div>
@@ -51,7 +51,7 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="form-group">
-						<img src="" class="img-responsive">
+						<img [src]="imgPath.value" class="img-responsive">
 					</div>
 				</div>
 			</div>

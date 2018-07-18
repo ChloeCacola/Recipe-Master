@@ -18,9 +18,6 @@ const appRoutes: Routes = [
 			  {path: '', component: RecipeNotSelectedComponent},
 			  //IMPORTANT!  any dynamic route (in this case, :id) must come AFTER any other relative child routes (otherwise, 'new' will try to be interpreted as an :id) 
 			  {path: 'new', component: RecipeEditComponent},
-			  //for if id is not yet defined for new recipes
-			  //(may be alternative way of doing this, but this was fast!)
-			  {path: 'NaN', redirectTo: '/recipes'},
 			  {path: ':id', component: RecipeDetailComponent },
 			  {path: ':id/edit', component: RecipeEditComponent}
 			]
