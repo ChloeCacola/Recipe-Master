@@ -1,9 +1,12 @@
+import { Subject } from 'rxjs';
+
 import { RecipeModel } from './recipe.model';
 import { IngredientModel } from '../shared/ingredient.model';
 
 export class RecipeService {
 
- 
+  //using an observable so can subscribe to the updates whenever a recipe is modified or a new one is created
+  recipesChanged = new Subject<RecipeModel[]>();
 
   //the recipe data (not accessible from outside)
   private recipes: RecipeModel[] = [
@@ -39,4 +42,14 @@ export class RecipeService {
   	return this.recipes[index]
   }
 
+  addRecipe(recipe: RecipeModel) {
+    this.recipes.push(recipe);
+    //emitting the recipe list update --> subscribed to in recipe-list component
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, newRecipe: RecipeModel) {
+    this.recipes[index] = newRecipe;
+    this.recipesChanged.next(this.recipes.slice());
+  }
 }

@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, 
+		 FormControl, 	
+		 FormArray, 
+		 Validators } from '@angular/forms';
+
 import { RecipeService } from '../recipe.service';
+import { RecipeModel } from '../recipe.model';
+
 
 @Component({
   selector: 'app-recipe-edit',
@@ -52,8 +58,9 @@ export class RecipeEditComponent implements OnInit {
   			for (let ingredient of recipe.ingredients) {
   				recipeIngredients.push(
   					new FormGroup({
-  						'name': new FormControl(ingredient.name),
-  						'amount': new FormControl(ingredient.amount)
+  						'name': new FormControl(ingredient.name, Validators.required),
+  						//same pattern validator as used in template form in 'shopping-edit' - no quotes, use between two forward slashes -> /here/
+  						'amount': new FormControl(ingredient.amount, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
   					})
   				);
   			}
@@ -61,9 +68,9 @@ export class RecipeEditComponent implements OnInit {
   	}
 
   	this.recipeForm = new FormGroup({
-  		'recipeName': new FormControl(recipeName),
-  		'imgPath': new FormControl(recipeImgPath),
-  		'description': new FormControl(recipeDesc),
+  		'recipeName': new FormControl(recipeName, Validators.required),
+  		'imgPath': new FormControl(recipeImgPath, Validators.required),
+  		'description': new FormControl(recipeDesc, Validators.required),
   		'ingredients': recipeIngredients
   	});
   }
@@ -73,14 +80,25 @@ export class RecipeEditComponent implements OnInit {
   	//**MUST convert to FormArray
   	(<FormArray>this.recipeForm.get('ingredients')).push(
   		new FormGroup({
-  			'name': new FormControl(),
-  			'amount': new FormControl()
+  			'name': new FormControl(null, Validators.required),
+  			'amount': new FormControl(null, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
   		})
   	);
   }
 
   onSave() {
-  	console.log(this.recipeForm);
+  	//newRecipe below is the same as this.recipeForm.value...
+  	const newRecipe = new RecipeModel(
+  			this.recipeForm.value['recipeName'],  
+  			this.recipeForm.value['description'],
+  			this.recipeForm.value['imgPath'],
+  			this.recipeForm.value['ingredients']);
+
+  	if(this.editMode) {
+  		this.recipeService.updateRecipe(this.id, newRecipe);
+  	} else {
+  		this.recipeService.addRecipe(newRecipe);
+  	}
   }
 
 }

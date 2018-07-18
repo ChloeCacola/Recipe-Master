@@ -1,6 +1,6 @@
 <!-- relative path can be used for routerLink in this case since will already be on '/recipes' -- this is the same as [routerLink]="['/recipes', recipeList.indexOf(recipe)]" -->
 <a 
-   style="cursor: pointer"
+   style="cursor: pointer;"
    class="list-group-item clearfix recipeItems"
    [routerLink]="[recipeList.indexOf(recipe)]"
    routerLinkActive="active">
@@ -8,8 +8,9 @@
   <div class="pull-left">
    <!-- below will be dynamic data (recipe name, description, and src of img) -->
    <h4 class="list-group-item-heading"> <b>{{ recipe.name }}</b> </h4>
-    <p class="list-group-item-text">{{ recipe.description }}</p>
+    <p class="list-group-item-text recipeDesc">{{ recipe.description }}</p>
   </div>
+  
 
   <span class="pull-right">
       <img 

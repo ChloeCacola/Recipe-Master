@@ -4,8 +4,13 @@
 		<form [formGroup]="recipeForm" (ngSubmit)="onSave()">
 			<div class="row pull-right">
 				<div class="col-xs-12">
-					<button class="btn btn-success recipe" type="submit">
+					<button class="btn btn-success recipe" 
+						type="submit"
+						[disabled]="recipeForm.invalid">
 						Save
+					</button>
+					<button class="btn btn-danger recipe" type="button">
+						Cancel
 					</button>
 					<button class="btn btn-danger recipe" type="button">
 						<span class="glyphicon glyphicon-trash" title="delete recipe"></span>
@@ -75,7 +80,7 @@
 							   formControlName="amount">
 						</div>
 						<div class="col-xs-2">
-							<button class="btn btn-danger" title="delete ingredient">X</button>
+							<button class="btn btn-sm btn-danger" title="delete ingredient">X</button>
 						</div>
 					</div>
 					<hr>

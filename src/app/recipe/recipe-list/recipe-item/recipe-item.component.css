@@ -2,9 +2,6 @@
 	margin: 20px 0px 0px;
 }
 
-p {
-	text-indent: 5%;
-}
 
 /*the active recipe bg, border, and description color*/
 a.active, .list-group-item.active .list-group-item-text, .list-group-item.active:focus .list-group-item-text, .list-group-item.active:hover .list-group-item-text {
@@ -26,4 +23,11 @@ a:hover {
 	background-color: #dff!important;
 	border-color: #aff!important;
 	color: #e78!important;
+}
+
+p.recipeDesc {
+	 max-width:200px; 
+	 width:100%; 
+	 word-wrap:break-word;
+	 text-align: justify;
 }
