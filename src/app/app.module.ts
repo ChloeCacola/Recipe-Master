@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownDirective } from './shared/dropdown.directive';
 
 import { ShoppingListService } from './shopping-list/shopping-list.service';
+import { RecipeService } from './recipe/recipe.service';
 
 //for routing
 import { AppRoutingModule } from './app-routing.module';
@@ -43,7 +44,7 @@ import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component'
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
