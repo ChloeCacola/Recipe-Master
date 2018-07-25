@@ -24,10 +24,23 @@ export class DataStorageService {
   //with subscribing auto
   fetchRecipes() {
     this.http.get('https://ng-recipe-master-book.firebaseio.com/recipes.json')
-    .subscribe(
+    //before subscribing, extract data and make sure there is an ingredients property 
+    .pipe(map(
     	(response: Response)=> {
     		//transform to js object
     		const recipes: RecipeModel[] = response.json();
+    		for (let recipe of recipes) {
+    			//if there is no ingredients property, add it
+    			if(!recipe['ingredients']) {
+    				console.log(recipe);
+    				//set to an empty array
+    				recipe['ingredients']=[];
+    			}
+    		}
+    		return recipes;
+    	}))
+    .subscribe(
+    	(recipes: RecipeModel[])=> {
     		//replace existing recipes (new method implemented in recipe service)
     		this.recipeService.setRecipes(recipes);
     	});

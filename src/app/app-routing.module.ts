@@ -8,6 +8,8 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 import { RecipeNotSelectedComponent } from './recipe/recipe-not-selected/recipe-not-selected.component';
 import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
 
 const appRoutes: Routes = [
 	//pathMatch must be used to redirect empty path; it specifies to only redirect if the full path is empty; the default is 'prefix'
@@ -22,7 +24,9 @@ const appRoutes: Routes = [
 			  {path: ':id/edit', component: RecipeEditComponent}
 			]
 	},
-	{path: 'shopping-list', component: ShoppingListComponent}
+	{path: 'shopping-list', component: ShoppingListComponent},
+	{path: 'signup', component: SignupComponent},
+	{path: 'signin', component: SigninComponent}
 ]
 
 @NgModule({

@@ -10,6 +10,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { RecipeService } from './recipe/recipe.service';
 import { DataStorageService } from './shared/data-storage.service';
+import { AuthService } from './auth/auth.service';
 
 //for routing
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,8 @@ import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.comp
 import { RecipeItemComponent } from './recipe/recipe-list/recipe-item/recipe-item.component';
 import { RecipeNotSelectedComponent } from './recipe/recipe-not-selected/recipe-not-selected.component';
 import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
 
 
 
@@ -39,7 +42,9 @@ import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component'
     RecipeItemComponent,
     DropdownDirective,
     RecipeNotSelectedComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,7 @@ import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component'
     AppRoutingModule,
     HttpModule
   ],
-  providers: [ShoppingListService, RecipeService, DataStorageService],
+  providers: [ShoppingListService, RecipeService, DataStorageService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
