@@ -1,24 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
 import { AuthService } from '../auth.service';
+
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, OnDestroy {
 
   error = false;
   errorMessage: string;
   successMessage: string;
 
+  errorSubscription: Subscription;
+  messageSubscription: Subscription;
+
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
 
-  	this.authService.message.subscribe(
+  	this.messageSubscription = this.authService.message.subscribe(
   		(message)=>{
   			console.log(message);
   			if(message === 'Success!') {
@@ -30,7 +34,7 @@ export class SignupComponent implements OnInit {
   			
   		});
 
-  	this.authService.error.subscribe(
+  	this.errorSubscription = this.authService.error.subscribe(
   		(error)=> this.error = error 
   		)
   }
@@ -43,6 +47,11 @@ export class SignupComponent implements OnInit {
 
   	//use auth service to signup user entered email/password
   	this.authService.signupUser(email, password);
+  }
+
+  ngOnDestroy() {
+  	this.messageSubscription.unsubscribe();
+  	this.errorSubscription.unsubscribe();
   }
 
 }
