@@ -16,10 +16,15 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				
+				<!-- only show these if user is not authenticated -->
+				<!-- this is wrapped in an ng template and [ngIf] because a div here would destroy the layout -->
+			  <ng-template [ngIf]="!authService.isAuthenticated()">
 				<li><a routerLink="/signin">Login</a></li>
 				<li><a routerLink="/signup">Register</a></li>
-
-				<li class="dropdown">
+			  </ng-template>
+				
+				<!-- only display this dropdown if user IS authenticated (logged in) -->
+				<li class="dropdown" *ngIf="authService.isAuthenticated()">
 					<div class="btn-group" appDropdown>
 					 <button class="btn dropdown-toggle manageBtn">Manage <span class="caret"></span></button>
 					  <ul class="dropdown-menu">
@@ -28,6 +33,8 @@
 					  </ul>
 					</div>
 				</li>
+
+				<li *ngIf="authService.isAuthenticated()"><a style="cursor: pointer" (click)="onLogout()">Logout</a></li>
 			</ul>
 		</div>
 	</div>

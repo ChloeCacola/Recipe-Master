@@ -67,4 +67,20 @@ export class AuthService {
 
         //now in data storage service, can call this method to access the token.
 	}
+
+	//determine if authenticated or not (for viewing or accessing certain features)
+	isAuthenticated() {
+		//is authenticated will return true if the token is set 
+		//used in header component
+		return this.token != null;
+	}
+
+	//destroy the token and clean up
+	//called from header component
+	logout() {
+		//firebase cleans up the storage
+		firebase.auth().signOut();
+		//also clear the token in this service
+		this.token = null;
+	}
 }
