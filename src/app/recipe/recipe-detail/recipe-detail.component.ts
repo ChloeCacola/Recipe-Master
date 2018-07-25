@@ -6,6 +6,7 @@ import { IngredientModel } from '../../shared/ingredient.model';
 
 import { ShoppingListService } from '../../shopping-list/shopping-list.service';
 import { RecipeService } from '../recipe.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'recipe-detail',
@@ -20,7 +21,7 @@ export class RecipeDetailComponent implements OnInit {
   id: number;
 
   //inject shopping list service for use of informing list additions from the recipe
-  constructor(private shoppingListService: ShoppingListService, private recipeService: RecipeService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private shoppingListService: ShoppingListService, private recipeService: RecipeService, private route: ActivatedRoute, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
 

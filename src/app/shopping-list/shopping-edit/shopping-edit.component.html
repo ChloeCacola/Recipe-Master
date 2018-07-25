@@ -33,14 +33,15 @@
 					<button 
 					 class="btn btn-success" 
 					 type="submit"
-					 [disabled]="!f.valid">
+					 [disabled]="!f.valid || !authService.isAuthenticated()">
 					 {{editMode ? 'Update' : 'Add'}}
 				    </button>
 					<button 
 					 class="btn btn-danger" 
 					 type="button"
 					 (click)="onDelete()"
-					 *ngIf="editMode">
+					 *ngIf="editMode"
+					 [disabled]="!authService.isAuthenticated()">
 					Delete
 				    </button>
 					<button 

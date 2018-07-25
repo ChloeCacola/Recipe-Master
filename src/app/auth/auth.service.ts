@@ -3,6 +3,10 @@ import * as firebase from 'firebase';
 
 import { Subject } from 'rxjs';
 
+import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+
+@Injectable()
 export class AuthService {
 
 	//this token is needed to confirm user is logged in and able to save and fetch recipes.
@@ -12,6 +16,9 @@ export class AuthService {
 
 	message = new Subject<string>();
 	error = new Subject<boolean>();
+
+	//inject the router for redirecting logins,logouts,etc.
+	constructor(private router: Router) {}
 
 	//expect email and password - signs up user
 	signupUser(email: string, password: string) {
@@ -38,8 +45,10 @@ export class AuthService {
 		firebase.auth().signInWithEmailAndPassword(email, password)
 		.then(
 			// response => console.log(response)
-			//grab the token and save it
 			response => {
+				//once signed in.. go to the route page..
+				this.router.navigate(['/']);
+				//get token and save it
 				firebase.auth().currentUser.getIdToken()
 				.then(
 					(token: string)=> this.token = token
@@ -82,5 +91,7 @@ export class AuthService {
 		firebase.auth().signOut();
 		//also clear the token in this service
 		this.token = null;
+		//redirect to login
+		this.router.navigate(['/signin']);
 	}
 }

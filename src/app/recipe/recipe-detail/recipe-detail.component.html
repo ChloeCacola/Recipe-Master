@@ -16,7 +16,8 @@
 		<div class="btn-group" appDropdown>
 			<button type="button" 
 			class="btn btn-primary 
-			dropdown-toggle manageRecipeBtn">
+			dropdown-toggle manageRecipeBtn"
+			[disabled]="!authService.isAuthenticated()">
 			Manage Recipe <span class="caret"></span>
 		    </button>
 		    <ul class="dropdown-menu">
