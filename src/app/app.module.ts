@@ -8,9 +8,12 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { RecipeService } from './recipe/recipe.service';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { DataStorageService } from './shared/data-storage.service';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
+=======
+>>>>>>> parent of d81dc93... initial data fetching and storing set up with firebase
 =======
 >>>>>>> parent of d81dc93... initial data fetching and storing set up with firebase
 
@@ -55,7 +58,11 @@ import { SigninComponent } from './auth/signin/signin.component';
     AppRoutingModule
   ],
 <<<<<<< HEAD
+<<<<<<< HEAD
   providers: [ShoppingListService, RecipeService, DataStorageService, AuthService, AuthGuard],
+=======
+  providers: [ShoppingListService, RecipeService],
+>>>>>>> parent of d81dc93... initial data fetching and storing set up with firebase
 =======
   providers: [ShoppingListService, RecipeService],
 >>>>>>> parent of d81dc93... initial data fetching and storing set up with firebase

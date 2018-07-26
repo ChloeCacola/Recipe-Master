@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Response } from '@angular/http';
 
 import { RecipeService } from '../recipe/recipe.service';
 import { DataStorageService } from '../shared/data-storage.service';
 import { AuthService } from '../auth/auth.service';
+=======
+>>>>>>> parent of d81dc93... initial data fetching and storing set up with firebase
 =======
 >>>>>>> parent of d81dc93... initial data fetching and storing set up with firebase
 
@@ -13,6 +16,7 @@ import { AuthService } from '../auth/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+<<<<<<< HEAD
 <<<<<<< HEAD
 export class HeaderComponent {
 
@@ -47,6 +51,9 @@ export class HeaderComponent {
 	}
 
 }
+=======
+export class HeaderComponent {}
+>>>>>>> parent of d81dc93... initial data fetching and storing set up with firebase
 =======
 export class HeaderComponent {}
 >>>>>>> parent of d81dc93... initial data fetching and storing set up with firebase
