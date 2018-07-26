@@ -1,6 +1,4 @@
 import { Subject } from 'rxjs';
-import { Injectable } from '@angular/core';
-
 
 import { RecipeModel } from './recipe.model';
 import { IngredientModel } from '../shared/ingredient.model';
@@ -34,12 +32,6 @@ export class RecipeService {
   	  new IngredientModel('test ingr 3', 8)
   	])
   ];
-
-  setRecipes(recipes: RecipeModel[]) {
-    this.recipes = recipes;
-    //copy returned 
-    this.recipesChanged.next(this.recipes.slice());
-  }
 
   //allowing access from outside
   getRecipes() {
